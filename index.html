@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Esquina | Carnicería y Distribuidora en Córdoba Centro</title>
+    <meta
+      name="description"
+      content="Carnicería y distribuidora La Esquina en Córdoba Centro. Pedí por WhatsApp con envíos en zona centro."
+    />
+    <meta
+      name="keywords"
+      content="carnicería Córdoba Centro, distribuidora de carne Córdoba, carne por mayor Córdoba, envíos de carne Córdoba Centro"
+    />
+    <meta property="og:title" content="La Esquina | Carnicería y Distribuidora en Córdoba Centro" />
+    <meta
+      property="og:description"
+      content="Carnicería y distribuidora La Esquina en Córdoba Centro. Pedí por WhatsApp con envíos en zona centro."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=1600&q=80"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0b;
+        --panel: #141416;
+        --panel-2: #1a1b1f;
+        --text: #f1ece6;
+        --muted: #b7b3ae;
+        --brand: #8e1f1f;
+        --brand-hover: #a82626;
+        --border: rgba(255, 255, 255, 0.14);
+        --ok: #8dcc9f;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, "SF Pro Display", "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .container { width: min(1120px, 92%); margin: 0 auto; }
+      .section { padding: 3.8rem 0; }
+
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(160deg, rgba(0, 0, 0, 0.8), rgba(13, 13, 16, 0.72)),
+          url('https://images.unsplash.com/photo-1551028150-64b9f398f678?auto=format&fit=crop&w=1800&q=80') center/cover;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hero-inner { max-width: 760px; padding: 5rem 0; }
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3.9rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+      .lead { margin: 1rem 0 2rem; color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.78rem 1.25rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+      }
+      .btn-primary { background: var(--brand); }
+      .btn-primary:hover { background: var(--brand-hover); transform: translateY(-1px); }
+      .btn-ghost { background: transparent; border-color: var(--border); }
+      .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.34); }
+
+      h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.01em; }
+      .sub { margin-top: 0.65rem; color: var(--muted); }
+
+      .products-grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+      .card img {
+        width: 100%;
+        height: 165px;
+        object-fit: cover;
+        display: block;
+      }
+      .card-body { padding: 1rem; display: grid; gap: 0.8rem; }
+      .card h3 { margin: 0; font-size: 1.02rem; }
+      .status { color: var(--ok); font-weight: 600; font-size: 0.92rem; }
+
+      .ship-panel,
+      .cta-panel {
+        background: linear-gradient(180deg, var(--panel), var(--panel-2));
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.4rem;
+      }
+      .ship-list { margin: 1rem 0 0.8rem; padding-left: 1.1rem; color: var(--muted); }
+      .ship-list li { margin: 0.35rem 0; }
+      .footer {
+        border-top: 1px solid var(--border);
+        padding: 2rem 0 2.6rem;
+        color: var(--muted);
+      }
+      .footer strong { color: var(--text); display: block; }
+
+      @media (min-width: 860px) {
+        .section { padding: 5rem 0; }
+        .ship-panel,
+        .cta-panel { padding: 1.8rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container hero-inner">
+        <h1>Carne, pollo y elaborados<br />en Córdoba Centro.</h1>
+        <p class="lead">
+          Atendemos al público y a comercios gastronómicos con precios especiales y envío en zona centro.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" id="hero-order" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          <a class="btn btn-ghost" id="hero-quote" href="#" target="_blank" rel="noopener">Cotizar para comercio</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="productos">
+        <div class="container">
+          <h2>Productos</h2>
+          <p class="sub">Calidad, frescura y opciones para tu casa o tu comercio.</p>
+          <div class="products-grid" id="productsGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="envios">
+        <div class="container">
+          <div class="ship-panel">
+            <h2>Envíos</h2>
+            <ul class="ship-list">
+              <li>Centro y zonas cercanas</li>
+              <li>Retiro en 9 de Julio y Urquiza</li>
+              <li>Horarios y disponibilidad por WhatsApp</li>
+            </ul>
+            <p class="sub">Consultanos por zona, horario y monto mínimo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta-panel">
+            <h2>¿Querés hacer un pedido?</h2>
+            <p class="sub">Escribinos por WhatsApp y te respondemos directo.</p>
+            <div class="actions">
+              <a class="btn btn-primary" id="cta-order" href="#" target="_blank" rel="noopener">Pedir ahora</a>
+              <a class="btn btn-ghost" id="cta-quote" href="#" target="_blank" rel="noopener">Cotizar comercio</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <strong>La Esquina</strong>
+        <div>Carnicería &amp; Distribución</div>
+        <div>9 de Julio y Urquiza, Córdoba Centro</div>
+        <div>WhatsApp: 3517585093</div>
+        <div>Precios sujetos a modificación. Consultar disponibilidad.</div>
+      </div>
+    </footer>
+
+    <script>
+      const WHATSAPP_BASE = "https://wa.me/543517585093?text=";
+
+      const products = [
+        {
+          nombre: "Carne molida",
+          disponibilidad: "Disponible",
+          imagen: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          nombre: "Milanesas carne/pollo",
+          disponibilidad: "Disponible",
+          imagen: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          nombre: "Hamburguesas",
+          disponibilidad: "Disponible",
+          imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          nombre: "Chorizos",
+          disponibilidad: "Disponible",
+          imagen: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          nombre: "Pollo",
+          disponibilidad: "Disponible",
+          imagen: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          nombre: "Cerdo",
+          disponibilidad: "Disponible",
+          imagen: "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          nombre: "Cortes para parrilla",
+          disponibilidad: "Disponible",
+          imagen: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+        }
+      ];
+
+      const buildLink = (message) => `${WHATSAPP_BASE}${encodeURIComponent(message)}`;
+
+      document.getElementById("hero-order").href = buildLink("Hola, vengo de la página. Quiero hacer un pedido.");
+      document.getElementById("cta-order").href = buildLink("Hola, vengo de la página. Quiero hacer un pedido.");
+      document.getElementById("hero-quote").href = buildLink("Hola, vengo de la página. Tengo un comercio y quiero cotizar precio según mi consumo semanal.");
+      document.getElementById("cta-quote").href = buildLink("Hola, vengo de la página. Tengo un comercio y quiero cotizar según mi consumo semanal.");
+
+      const productsGrid = document.getElementById("productsGrid");
+
+      products.forEach((product) => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const link = buildLink(`Hola, vengo de la página. Quiero consultar por ${product.nombre}.`);
+
+        card.innerHTML = `
+          <img src="${product.imagen}" alt="${product.nombre}" loading="lazy" />
+          <div class="card-body">
+            <h3>${product.nombre}</h3>
+            <div class="status">${product.disponibilidad}</div>
+            <a class="btn btn-primary" href="${link}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          </div>
+        `;
+
+        productsGrid.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
