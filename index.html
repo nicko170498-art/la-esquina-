@@ -4,179 +4,511 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Esquina | Carnicería y Distribuidora en Córdoba Centro</title>
-    <meta
-      name="description"
-      content="Carnicería y distribuidora La Esquina en Córdoba Centro. Pedí por WhatsApp con envíos en zona centro."
-    />
-    <meta
-      name="keywords"
-      content="carnicería Córdoba Centro, distribuidora de carne Córdoba, carne por mayor Córdoba, envíos de carne Córdoba Centro"
-    />
+    <meta name="description" content="Carnicería y distribuidora La Esquina en Córdoba Centro. Pedí por WhatsApp con envíos en zona centro." />
+    <meta name="keywords" content="carnicería Córdoba Centro, distribuidora de carne Córdoba, carne por mayor Córdoba, envíos de carne Córdoba Centro" />
     <meta property="og:title" content="La Esquina | Carnicería y Distribuidora en Córdoba Centro" />
-    <meta
-      property="og:description"
-      content="Carnicería y distribuidora La Esquina en Córdoba Centro. Pedí por WhatsApp con envíos en zona centro."
-    />
+    <meta property="og:description" content="Carnicería y distribuidora La Esquina en Córdoba Centro. Pedí por WhatsApp con envíos en zona centro." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
-    <meta
-      property="og:image"
-      content="https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=1600&q=80"
-    />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=1600&q=80" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
     <style>
       :root {
-        --bg: #0a0a0b;
-        --panel: #141416;
-        --panel-2: #1a1b1f;
-        --text: #f1ece6;
-        --muted: #b7b3ae;
-        --brand: #8e1f1f;
-        --brand-hover: #a82626;
-        --border: rgba(255, 255, 255, 0.14);
-        --ok: #8dcc9f;
+        --bg:         #0b0b0c;
+        --panel:      #141416;
+        --panel-2:    #1c1d21;
+        --text:       #f2ece5;
+        --muted:      #9a958f;
+        --muted-soft: #6b6762;
+        --brand:      #9b2020;
+        --brand-hover:#b52828;
+        --brand-glow: rgba(155, 32, 32, 0.35);
+        --border:     rgba(255,255,255,0.10);
+        --border-mid: rgba(255,255,255,0.18);
+        --ok:         #7ec99a;
+
+        --font-display: 'Playfair Display', Georgia, serif;
+        --font-body:    'DM Sans', 'Segoe UI', sans-serif;
+
+        --radius-sm:  0.5rem;
+        --radius-md:  0.9rem;
+        --radius-lg:  1.25rem;
+        --radius-pill:999px;
       }
 
-      * { box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
       body {
         margin: 0;
-        font-family: Inter, "SF Pro Display", "Segoe UI", sans-serif;
+        font-family: var(--font-body);
         background: var(--bg);
         color: var(--text);
-        line-height: 1.5;
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
       }
 
       .container { width: min(1120px, 92%); margin: 0 auto; }
-      .section { padding: 3.8rem 0; }
+      .section    { padding: 4.5rem 0; }
 
+      /* ── HERO ── */
       .hero {
-        min-height: 88vh;
+        min-height: 90vh;
         display: grid;
         place-items: center;
-        background:
-          linear-gradient(160deg, rgba(0, 0, 0, 0.8), rgba(13, 13, 16, 0.72)),
-          url('https://images.unsplash.com/photo-1551028150-64b9f398f678?auto=format&fit=crop&w=1800&q=80') center/cover;
+        position: relative;
+        overflow: hidden;
         border-bottom: 1px solid var(--border);
       }
 
-      .hero-inner { max-width: 760px; padding: 5rem 0; }
-      h1 {
-        margin: 0;
-        font-size: clamp(2rem, 5vw, 3.9rem);
-        line-height: 1.1;
-        letter-spacing: -0.02em;
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          url('https://images.unsplash.com/photo-1551028150-64b9f398f678?auto=format&fit=crop&w=1800&q=80')
+          center/cover;
+        z-index: 0;
+        transform: scale(1.04);
+        animation: heroZoom 14s ease-out forwards;
       }
-      .lead { margin: 1rem 0 2rem; color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); }
 
-      .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+      @keyframes heroZoom {
+        from { transform: scale(1.04); }
+        to   { transform: scale(1.00); }
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          150deg,
+          rgba(7, 6, 7, 0.88) 0%,
+          rgba(11, 10, 12, 0.70) 55%,
+          rgba(18, 10, 10, 0.60) 100%
+        );
+        z-index: 1;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 760px;
+        padding: 5rem 0 4rem;
+        animation: fadeUp 0.9s ease both;
+      }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border: 1px solid var(--border-mid);
+        border-radius: var(--radius-pill);
+        padding: 0.32rem 0.85rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .hero-eyebrow::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--brand);
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+        font-family: var(--font-display);
+        font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      h1 em {
+        font-style: italic;
+        color: rgba(242, 236, 229, 0.55);
+      }
+
+      .lead {
+        margin: 0 0 2.2rem;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.12rem);
+        font-weight: 300;
+        max-width: 500px;
+        line-height: 1.65;
+      }
+
+      /* ── BUTTONS ── */
+      .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
       .btn {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        padding: 0.78rem 1.25rem;
-        border-radius: 999px;
+        gap: 0.45rem;
+        padding: 0.8rem 1.4rem;
+        border-radius: var(--radius-pill);
         border: 1px solid transparent;
         text-decoration: none;
         color: var(--text);
+        font-family: var(--font-body);
         font-weight: 600;
-        font-size: 0.95rem;
-        transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+        font-size: 0.88rem;
+        letter-spacing: 0.01em;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          border-color     0.2s ease,
+          box-shadow       0.2s ease,
+          transform        0.18s ease;
       }
-      .btn-primary { background: var(--brand); }
-      .btn-primary:hover { background: var(--brand-hover); transform: translateY(-1px); }
-      .btn-ghost { background: transparent; border-color: var(--border); }
-      .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.34); }
 
-      h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.01em; }
-      .sub { margin-top: 0.65rem; color: var(--muted); }
+      .btn-primary {
+        background: var(--brand);
+        box-shadow:
+          0 1px 2px rgba(0,0,0,0.5),
+          0 4px 16px var(--brand-glow),
+          inset 0 1px 0 rgba(255,255,255,0.10);
+      }
 
-      .products-grid {
-        margin-top: 2rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      .btn-primary:hover {
+        background: var(--brand-hover);
+        box-shadow:
+          0 2px 4px rgba(0,0,0,0.55),
+          0 8px 28px rgba(155,32,32,0.50),
+          inset 0 1px 0 rgba(255,255,255,0.12);
+        transform: translateY(-2px);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+        box-shadow:
+          0 1px 3px rgba(0,0,0,0.5),
+          0 3px 10px var(--brand-glow);
+      }
+
+      .btn-ghost {
+        background: rgba(255,255,255,0.05);
+        border-color: var(--border-mid);
+        backdrop-filter: blur(6px);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      }
+
+      .btn-ghost:hover {
+        background: rgba(255,255,255,0.10);
+        border-color: rgba(255,255,255,0.30);
+        transform: translateY(-1px);
+      }
+
+      /* ── SECTION HEADINGS ── */
+      h2 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+
+      .sub {
+        margin-top: 0.6rem;
+        color: var(--muted);
+        font-size: 0.97rem;
+        font-weight: 300;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
         gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid var(--border);
       }
+
+      /* ── PRODUCTS GRID ── */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+        gap: 1.1rem;
+      }
+
       .card {
         background: var(--panel);
         border: 1px solid var(--border);
-        border-radius: 1rem;
+        border-radius: var(--radius-lg);
         overflow: hidden;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
       }
-      .card img {
+
+      .card:hover {
+        border-color: var(--border-mid);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+      }
+
+      .card-img {
         width: 100%;
-        height: 165px;
+        height: 170px;
         object-fit: cover;
         display: block;
+        transition: transform 0.4s ease;
       }
-      .card-body { padding: 1rem; display: grid; gap: 0.8rem; }
-      .card h3 { margin: 0; font-size: 1.02rem; }
-      .status { color: var(--ok); font-weight: 600; font-size: 0.92rem; }
 
-      .ship-panel,
-      .cta-panel {
-        background: linear-gradient(180deg, var(--panel), var(--panel-2));
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        padding: 1.4rem;
+      .card:hover .card-img {
+        transform: scale(1.04);
       }
-      .ship-list { margin: 1rem 0 0.8rem; padding-left: 1.1rem; color: var(--muted); }
-      .ship-list li { margin: 0.35rem 0; }
+
+      .card-img-wrap {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-img-wrap::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 40px;
+        background: linear-gradient(transparent, var(--panel));
+      }
+
+      .card-body {
+        padding: 1rem 1.1rem 1.2rem;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--ok);
+        font-weight: 600;
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
+      }
+
+      .status::before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--ok);
+        box-shadow: 0 0 6px var(--ok);
+      }
+
+      /* ── SHIP PANEL ── */
+      .info-panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem 2.2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .info-panel::before {
+        content: '';
+        position: absolute;
+        top: -1px; left: 2rem;
+        width: 64px; height: 2px;
+        background: var(--brand);
+        border-radius: 0 0 2px 2px;
+      }
+
+      .ship-list {
+        margin: 1.2rem 0 1rem;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .ship-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .ship-list li::before {
+        content: '';
+        flex-shrink: 0;
+        width: 18px; height: 18px;
+        border-radius: 50%;
+        background: rgba(155, 32, 32, 0.18);
+        border: 1px solid rgba(155, 32, 32, 0.35);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23c0504f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      /* ── CTA PANEL ── */
+      .cta-panel {
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2.4rem 2.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .cta-panel .actions { gap: 0.65rem; }
+
+      /* ── FOOTER ── */
       .footer {
         border-top: 1px solid var(--border);
-        padding: 2rem 0 2.6rem;
-        color: var(--muted);
+        padding: 2.4rem 0 3rem;
+        color: var(--muted-soft);
+        font-size: 0.88rem;
       }
-      .footer strong { color: var(--text); display: block; }
 
-      @media (min-width: 860px) {
-        .section { padding: 5rem 0; }
-        .ship-panel,
-        .cta-panel { padding: 1.8rem; }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.8rem;
+        align-items: start;
+      }
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        margin-bottom: 0.25rem;
+      }
+
+      .footer-tagline {
+        color: var(--muted-soft);
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .footer-info { line-height: 1.9; }
+      .footer-info a { color: var(--muted); text-decoration: none; }
+      .footer-info a:hover { color: var(--text); }
+
+      .footer-legal {
+        text-align: right;
+        color: var(--muted-soft);
+        font-size: 0.78rem;
+        padding-top: 0.2rem;
+        line-height: 1.8;
+      }
+
+      /* ── DIVIDER ── */
+      .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+      }
+
+      @media (max-width: 680px) {
+        .section { padding: 3.2rem 0; }
+        .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+        .cta-panel { flex-direction: column; align-items: flex-start; }
+        .footer-inner { grid-template-columns: 1fr; }
+        .footer-legal { text-align: left; }
+        .info-panel { padding: 1.6rem; }
       }
     </style>
   </head>
   <body>
+
+    <!-- HERO -->
     <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
       <div class="container hero-inner">
-        <h1>Carne, pollo y elaborados<br />en Córdoba Centro.</h1>
+        <div class="hero-eyebrow">Córdoba Centro — 9 de Julio y Urquiza</div>
+        <h1>Carne, pollo<br /><em>y elaborados</em><br />de calidad.</h1>
         <p class="lead">
           Atendemos al público y a comercios gastronómicos con precios especiales y envío en zona centro.
         </p>
         <div class="actions">
-          <a class="btn btn-primary" id="hero-order" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
-          <a class="btn btn-ghost" id="hero-quote" href="#" target="_blank" rel="noopener">Cotizar para comercio</a>
+          <a class="btn btn-primary" id="hero-order" href="#" target="_blank" rel="noopener">
+            Pedir por WhatsApp
+          </a>
+          <a class="btn btn-ghost" id="hero-quote" href="#" target="_blank" rel="noopener">
+            Cotizar para comercio
+          </a>
         </div>
       </div>
     </header>
 
     <main>
+
+      <!-- PRODUCTOS -->
       <section class="section" id="productos">
         <div class="container">
-          <h2>Productos</h2>
-          <p class="sub">Calidad, frescura y opciones para tu casa o tu comercio.</p>
+          <div class="section-header">
+            <div>
+              <h2>Productos</h2>
+              <p class="sub">Frescura y variedad para tu casa o tu negocio.</p>
+            </div>
+          </div>
           <div class="products-grid" id="productsGrid"></div>
         </div>
       </section>
 
+      <div class="container"><div class="divider"></div></div>
+
+      <!-- ENVÍOS -->
       <section class="section" id="envios">
         <div class="container">
-          <div class="ship-panel">
+          <div class="info-panel">
             <h2>Envíos</h2>
             <ul class="ship-list">
               <li>Centro y zonas cercanas</li>
               <li>Retiro en 9 de Julio y Urquiza</li>
               <li>Horarios y disponibilidad por WhatsApp</li>
             </ul>
-            <p class="sub">Consultanos por zona, horario y monto mínimo.</p>
+            <p class="sub" style="margin-top: 0.2rem;">Consultanos por zona, horario y monto mínimo.</p>
           </div>
         </div>
       </section>
 
+      <div class="container"><div class="divider"></div></div>
+
+      <!-- CTA -->
       <section class="section">
         <div class="container">
           <div class="cta-panel">
-            <h2>¿Querés hacer un pedido?</h2>
-            <p class="sub">Escribinos por WhatsApp y te respondemos directo.</p>
+            <div>
+              <h2>¿Hacemos un pedido?</h2>
+              <p class="sub" style="margin-top: 0.5rem; max-width: 380px;">Escribinos por WhatsApp y te respondemos directo, sin vueltas.</p>
+            </div>
             <div class="actions">
               <a class="btn btn-primary" id="cta-order" href="#" target="_blank" rel="noopener">Pedir ahora</a>
               <a class="btn btn-ghost" id="cta-quote" href="#" target="_blank" rel="noopener">Cotizar comercio</a>
@@ -184,82 +516,67 @@
           </div>
         </div>
       </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
-        <strong>La Esquina</strong>
-        <div>Carnicería &amp; Distribución</div>
-        <div>9 de Julio y Urquiza, Córdoba Centro</div>
-        <div>WhatsApp: 3518026537</div>
-        <div>Precios sujetos a modificación. Consultar disponibilidad.</div>
+        <div class="footer-inner">
+          <div>
+            <div class="footer-brand">La Esquina</div>
+            <div class="footer-tagline">Carnicería &amp; Distribución</div>
+            <div class="footer-info">
+              9 de Julio y Urquiza, Córdoba Centro<br />
+              <a href="https://wa.me/543518026537">WhatsApp: 351 802-6537</a>
+            </div>
+          </div>
+          <div class="footer-legal">
+            Precios sujetos a modificación.<br />
+            Consultar disponibilidad.
+          </div>
+        </div>
       </div>
     </footer>
 
     <script>
       const WHATSAPP_BASE = "https://wa.me/543518026537?text=";
 
-const products = [
-  {
-    nombre: "Carne molida",
-    disponibilidad: "Disponible",
-    imagen: "./imagen carne molida.jpg.jpg"
-  },
-  {
-    nombre: "Milanesas carne/pollo",
-    disponibilidad: "Disponible",
-    imagen: "./milanesas carne.jpg.jpg"
-  },
-  {
-    nombre: "Hamburguesas",
-    disponibilidad: "Disponible",
-    imagen: "./amburguesas carne.jpg.jpg"
-  },
-  {
-    nombre: "Chorizos",
-    disponibilidad: "Disponible",
-    imagen: "./choriii.jpg"
-  },
-  {
-    nombre: "Pollo",
-    disponibilidad: "Disponible",
-    imagen: "./polloo.jpg"
-  },
-  {
-    nombre: "Cerdo",
-    disponibilidad: "Disponible",
-    imagen: "./cerdoo.jpg"
-  },
-  {
-    nombre: "Cortes para parrilla",
-    disponibilidad: "Disponible",
-    imagen: "./corte para parrilla.jpg"
-  }
-];
+      const products = [
+        { nombre: "Carne molida",           disponibilidad: "Disponible", imagen: "./imagen carne molida.jpg.jpg" },
+        { nombre: "Milanesas carne/pollo",  disponibilidad: "Disponible", imagen: "./milanesas carne.jpg.jpg" },
+        { nombre: "Hamburguesas",           disponibilidad: "Disponible", imagen: "./amburguesas carne.jpg.jpg" },
+        { nombre: "Chorizos",               disponibilidad: "Disponible", imagen: "./choriii.jpg" },
+        { nombre: "Pollo",                  disponibilidad: "Disponible", imagen: "./polloo.jpg" },
+        { nombre: "Cerdo",                  disponibilidad: "Disponible", imagen: "./cerdoo.jpg" },
+        { nombre: "Cortes para parrilla",   disponibilidad: "Disponible", imagen: "./corte para parrilla.jpg" },
+      ];
+
       const buildLink = (message) => `${WHATSAPP_BASE}${encodeURIComponent(message)}`;
 
       document.getElementById("hero-order").href = buildLink("Hola, vengo de la página. Quiero hacer un pedido.");
-      document.getElementById("cta-order").href = buildLink("Hola, vengo de la página. Quiero hacer un pedido.");
+      document.getElementById("cta-order").href  = buildLink("Hola, vengo de la página. Quiero hacer un pedido.");
       document.getElementById("hero-quote").href = buildLink("Hola, vengo de la página. Tengo un comercio y quiero cotizar precio según mi consumo semanal.");
-      document.getElementById("cta-quote").href = buildLink("Hola, vengo de la página. Tengo un comercio y quiero cotizar según mi consumo semanal.");
+      document.getElementById("cta-quote").href  = buildLink("Hola, vengo de la página. Tengo un comercio y quiero cotizar según mi consumo semanal.");
 
       const productsGrid = document.getElementById("productsGrid");
 
       products.forEach((product) => {
         const card = document.createElement("article");
         card.className = "card";
-
         const link = buildLink(`Hola, vengo de la página. Quiero consultar por ${product.nombre}.`);
-
         card.innerHTML = `
-          <img src="${product.imagen}" alt="${product.nombre}" loading="lazy" />
+          <div class="card-img-wrap">
+            <img class="card-img" src="${product.imagen}" alt="${product.nombre}" loading="lazy" />
+          </div>
           <div class="card-body">
             <h3>${product.nombre}</h3>
             <div class="status">${product.disponibilidad}</div>
-            <a class="btn btn-primary" href="${link}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+            <a class="btn btn-primary" href="${link}" target="_blank" rel="noopener" style="width:100%; justify-content:center; font-size:0.84rem; padding:0.7rem 1rem;">
+              Consultar por WhatsApp
+            </a>
           </div>
         `;
-
         productsGrid.appendChild(card);
       });
     </script>
